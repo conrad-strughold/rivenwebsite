@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+/* base layout */
+html, body, #root { height: 100%; }
+body {
+  font-family: "Host Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  background: #0a0a0c;
+}
+
+[class*="/none"] { line-height: 1 !important; }
