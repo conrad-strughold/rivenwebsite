@@ -175,7 +175,7 @@ export default function NeutrlStyleLanding() {
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,rgba(10,10,12,0.9),rgba(10,10,12,1))]"/>
 
       {/* Navbar */}
-      <header className="sticky top-0 z-40">
+      <header className="sticky top-0 z-40 backdrop-blur">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <nav className={`mt-6 ${glass} rounded-2xl px-4 py-3 flex items-center justify-between`}>
             <div className="flex items-center gap-3 min-w-0">
@@ -186,6 +186,8 @@ export default function NeutrlStyleLanding() {
             </div>
             <div className="hidden md:flex items-center gap-6 text-sm leading-none text-white/80">
               <a href="#features" className="hover:text-white">Products</a>
+              <a href="#problem" className="hover:text-white">Problem</a>
+              <a href="#solution" className="hover:text-white">Solution</a>
               <a href="#how" className="hover:text-white">How It Works</a>
               <a href="#docs" className="hover:text-white">Learn</a>
               <a href="#pricing" className="hover:text-white">Launch</a>
@@ -212,16 +214,16 @@ export default function NeutrlStyleLanding() {
               Live on Testnet • V0.9
             </div>
             <h1 className="mt-6 text-4xl sm:text-6xl md:text-7xl font-semibold tracking-tight break-words hyphens-auto whitespace-normal">
-              Trade <span className="text-white/90">Liquidity Fees</span>. Own the Flow.
+              Split liquidity. <span className="text-white/90">Master fees.</span>
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-white/70 text-base sm:text-lg break-words hyphens-auto whitespace-normal">
-              Split liquidity into fee and principal. Earn, hedge, or exit anytime — clarity over complexity.
+              Riven turns any LP into two tokens: <strong>FT</strong> for trading-fee flow and <strong>PT</strong> for principal. Hedge, fix, or amplify your fee exposure.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
-              <a href="#app" className="rounded-full bg-white text-black px-6 py-3 font-medium hover:bg-white/90 transition">Get Started</a>
-              <a href="#video" className={`rounded-full px-6 py-3 font-medium ${glass} hover:bg-white/10 transition`}>View Demo</a>
+              <a href="#app" className="rounded-full bg-white text-black px-6 py-3 font-medium hover:bg-white/90 transition">Launch App</a>
+              <a href="#video" className={`rounded-full px-6 py-3 font-medium ${glass} hover:bg-white/10 transition`}>Watch 60s demo</a>
             </div>
-            <p className="mt-4 text-xs text-white/50">No wallet? Explore in read-only mode.</p>
+            <p className="mt-4 text-xs text-white/50">No wallet? Explore in read-only.</p>
 
             <div className="mx-auto mt-6 w-full max-w-4xl">
               <MiniSplitDiagram />
@@ -274,7 +276,7 @@ export default function NeutrlStyleLanding() {
                   Liquidity Split
                 </div>
                 <h3 className="mt-3 text-2xl font-semibold break-words hyphens-auto whitespace-normal">
-                  Transform LPs into yield &amp; principal.
+                  Transform LPs into fee &amp; principal.
                 </h3>
                 <p className="mt-2 text-white/70 text-sm break-words hyphens-auto whitespace-normal">
                   Deposit once, mint two tokens: the <strong>Fee Token (FT)</strong> captures trading fees, and the <strong>Principal Token (PT)</strong> tracks your base position.
@@ -345,21 +347,59 @@ export default function NeutrlStyleLanding() {
           </div>
         </section>
 
+        {/* Problem */}
+        <section id="problem" className="mt-20 sm:mt-28">
+          <div className={`rounded-3xl ${glass} p-6 sm:p-10`}>
+            <h3 className="text-2xl sm:text-3xl font-semibold">The problem with LP yield</h3>
+            <p className="mt-2 text-white/70">
+              Trading fees are volatile and hard to price. You can’t hedge them cleanly, you can’t sell the future flow, and exiting your LP kills your exposure.
+            </p>
+            <ul className="mt-4 grid sm:grid-cols-3 gap-3 text-sm text-white/75">
+              <li className="rounded-2xl bg-white/5 p-4">APY whiplash across markets</li>
+              <li className="rounded-2xl bg-white/5 p-4">No way to fix or pre-sell fees</li>
+              <li className="rounded-2xl bg-white/5 p-4">Bundled risk: capital + fees</li>
+            </ul>
+          </div>
+        </section>
+
+        {/* Solution */}
+        <section id="solution" className="mt-12 sm:mt-16">
+          <div className={`rounded-3xl ${glass} p-6 sm:p-10`}>
+            <h3 className="text-2xl sm:text-3xl font-semibold">Riven unbundles your position</h3>
+            <p className="mt-2 text-white/70">
+              Split once. Get two ERC-20s. Trade the fee stream independently from your principal.
+            </p>
+            <div className="grid md:grid-cols-3 gap-5 mt-6">
+              {[
+                ["Earn fixed income", "Sell FT now, hold PT to keep base exposure."],
+                ["Speculate on fees", "Buy FT only if you expect volume spikes."],
+                ["Exit cleanly", "Recompose PT+FT to reclaim your LP anytime."],
+              ].map(([t, d], i) => (
+                <div key={i} className={`rounded-3xl ${glass} p-6`}>
+                  <div className="text-sm text-white/60">0{i+1}</div>
+                  <div className="mt-1 font-semibold">{t}</div>
+                  <div className="text-white/70 mt-2 text-sm">{d}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Features */}
         <section id="features" className="mt-20 sm:mt-28">
           <div className="grid md:grid-cols-3 gap-5">
             {[
               {
                 title: "Split liquidity",
-                desc: "Mint PT + FT to separate yield from exposure. Control outcomes, reduce noise.",
+                desc: "Mint PT + FT to separate fee flow from principal. Control outcomes, reduce noise.",
               },
               {
                 title: "Sell future fees",
-                desc: "Lock in returns or speculate on future yield — the market decides.",
+                desc: "Lock in returns or speculate on fee flow — the market sets the price.",
               },
               {
                 title: "Composable by design",
-                desc: "PT and FT plug into vaults, hedges, and on-chain strategies with full interoperability.",
+                desc: "PT and FT integrate with vaults, hedges, and on-chain strategies.",
               },
             ].map((f, i) => (
               <div key={i} className={`rounded-3xl ${glass} p-6 sm:p-8 min-w-0`}>
